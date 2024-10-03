@@ -1,0 +1,63 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-list-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  flex-shrink: 0;
+}
+
+.photo-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-banner {
+  width: 100%;
+  height: auto;
+}
+
+.photo-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+  text-align: center;
+}
+
+.frame-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0rem 6.88rem;
+  padding-top: 2.62rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 0rem 6.88rem;
+}

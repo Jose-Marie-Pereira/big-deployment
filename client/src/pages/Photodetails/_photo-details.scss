@@ -1,0 +1,247 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-details-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.25rem;
+  text-align: center;
+}
+
+.banner-sub {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.panoramic-photo-list {
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem; /* 157.143% */
+}
+
+.photo-details {
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.375rem; /* 157.143% */
+}
+
+.img-details {
+  height: 38.4375rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  background: var(--Default-Gray-10, #f4f4f4);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img-preview {
+  width: 100%;
+  height: 90%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.img-sub {
+  color: var(--Default-Neutral-Black, #000);
+  font-family: "Titillium Web";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.page-header {
+  color: var(--Default-Neutral-Black, #000);
+  font-family: "Titillium Web";
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 4.5rem;
+  margin: 0;
+  padding-bottom: 2rem;
+}
+
+.object {
+  color: var(--geo-blue-03, #1f4d97);
+  font-family: "Titillium Web";
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.amount {
+  color: var(--Default-Neutral-Black, #000);
+  font-family: "Titillium Web";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.num-amount {
+  color: var(--Text-text-secondary, #525252);
+  font-family: "Titillium Web";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.object-detect {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* You can adjust the scale and shadow values as needed */
+
+  &:hover {
+    transform: scale(1.05); /* Slightly enlarge the image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+  }
+}
+
+.table-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.info-title {
+  width: 15.4375rem;
+  height: 2.0625rem;
+  flex-shrink: 0;
+  color: #1868ab;
+  font-weight: 700;
+  letter-spacing: 0.0875rem;
+  line-height: 2rem;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1rem 0;
+}
+
+.device-table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Titillium Web", sans-serif;
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0; /* Add a bottom border */
+  }
+
+  th {
+    background: #0081bf;
+    color: #fff;
+    font-weight: 700;
+    text-align: left;
+    vertical-align: middle;
+    color: #fff;
+    font-family: "Titillium Web";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.25rem;
+
+    &:first-child {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+  }
+
+  td {
+    color: var(--Default-Neutral-Black, #000);
+    font-family: "Titillium Web";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem; /* 142.857% */
+    /* Optional: Remove the bottom border for the last row */
+    &:last-child {
+      border-bottom: none; /* Remove bottom border for the last cell */
+    }
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
+
+  tbody tr:hover {
+    background-color: #d1e7ff; /* Change to your chosen hover color */
+  }
+}
+
+td.obj-name {
+  color: var(--Default-Neutral-Black, #000);
+  font-family: "Titillium Web";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25rem; /* 142.857% */
+}
+
+.coord-label {
+  color: var(--Default-Neutral-Black, #000);
+  font-family: "Titillium Web";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25rem; /* 142.857% */
+}
+
+.divider {
+  background: var(--Border-border-subtle-selected-01, #c6c6c6);
+  height: 0.0625rem;
+}

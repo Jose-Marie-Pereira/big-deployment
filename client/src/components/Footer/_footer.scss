@@ -1,0 +1,69 @@
+.footer {
+  width: 100%;
+  background: var(--Categorical---3-Colors-Option-5-Cyan-90, #012749);
+  padding: 3.75rem 6.88rem 2.75rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #012749;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex: 1;
+}
+
+.foot-left,
+.foot-right {
+  flex: 1;
+}
+
+.footer-title {
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.footer-image {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.alt-footer-text {
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.address {
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.store {
+  width: 9.125rem;
+  height: 3.125rem;
+}
+
+.foot-right {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.copyright {
+  color: #fff;
+  font-family: "Titillium Web";
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 2rem;
+}

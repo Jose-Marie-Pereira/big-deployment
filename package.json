@@ -15,7 +15,21 @@
         "client-build": "npm run build --prefix client"
     },
     "dependencies": {
-        "concurrently": "^8.2.0"
+        "@chakra-ui/react": "^2.9.3",
+        "@emotion/react": "^11.13.3",
+        "@emotion/styled": "^11.13.0",
+        "@mui/base": "^5.0.0-beta.58",
+        "@mui/icons-material": "^6.1.2",
+        "@mui/material": "^6.1.2",
+        "carbon-components": "^10.58.15",
+        "carbon-components-react": "^8.67.0",
+        "carbon-icons": "^7.0.7",
+        "concurrently": "^8.2.0",
+        "flowbite": "^2.5.2",
+        "flowbite-react": "^0.10.2",
+        "framer-motion": "^11.9.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
     },
     "devDependencies": {
         "nodemon": "^3.0.1"
