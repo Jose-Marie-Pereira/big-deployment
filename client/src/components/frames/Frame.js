@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './_frame.scss';
-import Sample from './frame-img/sample.jpeg';
 import Icon from './frame-img/Icon.svg';
 
-const Frame = ({ alt }) => {
+const Frame = ({ image, title }) => {
     const navigate = useNavigate();
 
     const handleIconClick = () => {
@@ -13,9 +12,9 @@ const Frame = ({ alt }) => {
 
     return (
         <div className='frame'>
-            <img src={Sample} alt={alt} className='frame-image' />
+            <img src={image} alt={title} className='frame-image' />
             <div className='frame-menu'>
-                <p className='frame-name'>COS_1234TYG</p>
+                <p className='frame-name'>{title}</p>
                 <img
                     src={Icon}
                     alt='Icon'

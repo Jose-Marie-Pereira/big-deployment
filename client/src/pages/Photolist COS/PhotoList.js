@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import './_photolist.scss';
 import Banner from './photolist-img/Header Banner.png';
@@ -8,14 +8,38 @@ import Pagination from '../../components/Pagination/Pagination';
 
 const PhotoList = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const totalFrames = 39;
+    const [frames, setFrames] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true); // New loading state
     const framesPerPage = 16;
 
-    const totalPages = Math.ceil(totalFrames / framesPerPage);
+    useEffect(() => {
+        const fetchFrames = async () => {
+            setLoading(true); // Set loading to true when fetching starts
+            try {
+                const response = await fetch('http://localhost:3002/get_from_db');
+                const data = await response.json();
 
+                if (data.status === 'success') {
+                    setFrames(data.data);
+                } else {
+                    setError('Failed to fetch frames.');
+                }
+            } catch (error) {
+                setError('Error fetching frames: ' + error.message);
+            } finally {
+                setLoading(false); // Set loading to false after fetching
+            }
+        };
+
+        fetchFrames();
+    }, []);
+
+    const totalFrames = frames.length;
+    const totalPages = Math.ceil(totalFrames / framesPerPage);
     const indexOfLastFrame = currentPage * framesPerPage;
     const indexOfFirstFrame = indexOfLastFrame - framesPerPage;
-    const currentFrames = [...Array(totalFrames)].slice(indexOfFirstFrame, indexOfLastFrame);
+    const currentFrames = frames.slice(indexOfFirstFrame, indexOfLastFrame);
 
     const onPageChange = (page) => {
         setCurrentPage(page);
@@ -29,16 +53,30 @@ const PhotoList = () => {
                 <div className="banner-text">Panoramic Photo List</div>
             </div>
             <div className="frame-container">
-                {currentFrames.map((_, index) => (
-                    <Frame key={index + indexOfFirstFrame} alt={`Frame ${index + indexOfFirstFrame + 1}`} />
-                ))}
+                {loading ? ( // Check loading state
+                    <p>Loading frames...</p> // Loading indicator
+                ) : error ? (
+                    <p>{error}</p>
+                ) : currentFrames.length > 0 ? (
+                    currentFrames.map((frame) => (
+                        <Frame
+                            key={frame.title}
+                            image={frame.image_path}
+                            title={frame.title}
+                        />
+                    ))
+                ) : (
+                    <p>No frames available.</p>
+                )}
             </div>
             <div className="pagination-container" style={{ display: 'flex', justifyContent: 'end' }}>
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={onPageChange}
-                />
+                {totalPages > 1 && (
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={onPageChange}
+                    />
+                )}
             </div>
             <Footer />
         </div>
