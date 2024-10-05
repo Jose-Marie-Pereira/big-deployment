@@ -1,16 +1,15 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './_photo-details.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Banner from '../Photolist COS/photolist-img/Header Banner.png';
 import Footer from '../../components/Footer/Footer';
-import Sample from './Photodetail-img/Photodetails.jpeg';
-import B1 from './Photodetail-img/b1.png';
-import B2 from './Photodetail-img/b2.png';
-import t1 from './Photodetail-img/t1.png';
-import t2 from './Photodetail-img/t2.png';
-import t3 from './Photodetail-img/t3.png';
 
 const PhotoDetails = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { image_path, title, object } = location.state;
+
     return (
         <div className="photo-details-container">
             <Navbar />
@@ -24,115 +23,72 @@ const PhotoDetails = () => {
             </div>
 
             <div style={{ padding: '3rem 6.88rem' }}>
+
+                <button className="back-button" onClick={() => navigate(-1)}>&lt; Back</button>
+
                 <div className="img-details">
-                    <img src={Sample} alt="Sample Pic" className="img-preview" />
-                    <p className="img-sub">COS_1234TYG</p>
+                    <img src={image_path} alt={title} className="img-preview" />
+                    <p className="img-sub">{title}</p>
                 </div>
 
                 <div>
                     <h4 className="page-header">Objects Detected</h4>
-                    <p className="object">Building</p>
-                    <div style={{ marginTop: '0.5rem' }}>
-                        <span className="amount">Amount: </span>
-                        <span className="num-amount"> &nbsp;2</span>
-                    </div>
-                    <div style={{ display: 'flex', gap: '2rem' }}>
-                        <img src={B1} alt="Building 1" className="object-detect" />
-                        <img src={B2} alt="Building 2" className="object-detect" />
-                    </div>
 
-                    <div className="container">
-                        <table className="device-table">
-                            <thead>
-                                <tr >
-                                    <th>Object</th>
-                                    <th>Coordinate</th>
-                                    <th>Length</th>
-                                    <th>Width</th>
-                                    <th>Height</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className='obj-name'>Building 1</td>
-                                    <td>
-                                        <span className="coord-label">Latitude:</span> 12.345 <br />
-                                        <span className="coord-label">Longitude:</span> 67.890
-                                    </td>
-                                    <td>100m</td>
-                                    <td>50m</td>
-                                    <td>200m</td>
-                                </tr>
-                                <tr>
-                                    <td className='obj-name'>Building 2</td>
-                                    <td>
-                                        <span className="coord-label">Latitude:</span> 12.345 <br />
-                                        <span className="coord-label">Longitude:</span> 67.890
-                                    </td>
-                                    <td>120m</td>
-                                    <td>60m</td>
-                                    <td>220m</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className='divider' style={{ margin: '2.5rem, 0rem' }}></div>
-                    <p className="object">Trees</p>
-                    <div style={{ marginTop: '0.5rem' }}>
-                        <span className="amount">Amount: </span>
-                        <span className="num-amount"> &nbsp;3</span>
-                    </div>
-                    <div style={{ display: 'flex', gap: '2rem' }}>
-                        <img src={t1} alt="Tree 1" className="object-detect" />
-                        <img src={t2} alt="Tree 2" className="object-detect" />
-                        <img src={t3} alt="Tree 2" className="object-detect" />
-                    </div>
+                    {object.map((obj, index) => (
+                        <div key={index}>
+                            <p className="object">{obj.object_type}</p>
+                            <div style={{ marginTop: '0.5rem' }}>
+                                <span className="amount">Amount: </span>
+                                <span className="num-amount"> &nbsp;{obj.total_object}</span>
+                            </div>
 
-                    <div className="container">
-                        <table className="device-table">
-                            <thead>
-                                <tr >
-                                    <th>Object</th>
-                                    <th>Coordinate</th>
-                                    <th>Length</th>
-                                    <th>Width</th>
-                                    <th>Height</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className='obj-name'>Tree 1</td>
-                                    <td>
-                                        <span className="coord-label">Latitude:</span> 12.345 <br />
-                                        <span className="coord-label">Longitude:</span> 67.890
-                                    </td>
-                                    <td>100m</td>
-                                    <td>50m</td>
-                                    <td>10m</td>
-                                </tr>
-                                <tr>
-                                    <td className='obj-name'>Tree 2</td>
-                                    <td>
-                                        <span className="coord-label">Latitude:</span> 112.92 <br />
-                                        <span className="coord-label">Longitude:</span> 67.890
-                                    </td>
-                                    <td>17m</td>
-                                    <td>60m</td>
-                                    <td>20m</td>
-                                </tr>
-                                <tr>
-                                    <td className='obj-name'>Tree 3</td>
-                                    <td>
-                                        <span className="coord-label">Latitude:</span> 12.3425 <br />
-                                        <span className="coord-label">Longitude:</span> 67.890
-                                    </td>
-                                    <td>17m</td>
-                                    <td>40m</td>
-                                    <td>20m</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <div style={{ display: 'flex', gap: '2rem' }}>
+                                {obj.details.map((detail, detailIndex) => (
+                                    <img
+                                        key={detailIndex}
+                                        src={detail.image_path}
+                                        alt={detail.title}
+                                        className="object-detect"
+                                        style={{ maxWidth: '20rem', maxHeight: '15rem', objectFit: 'cover' }}
+                                    />
+                                ))}
+                            </div>
+
+                            <div className="container">
+                                <table className="device-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Object</th>
+                                            <th>Coordinate</th>
+                                            <th>Length</th>
+                                            <th>Width</th>
+                                            <th>Height</th>
+                                            <th>Building Type</th>
+                                            <th>City</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {obj.details.map((detail, detailIndex) => (
+                                            <tr key={detailIndex}>
+                                                <td className="obj-name">{detail.title}</td>
+                                                <td>
+                                                    <span className="coord-label">Latitude:</span> {detail.lat} <br />
+                                                    <span className="coord-label">Longitude:</span> {detail.long}
+                                                </td>
+                                                <td>{detail.length}m</td>
+                                                <td>{detail.width}m</td>
+                                                <td>{detail.height}m</td>
+                                                <td>{detail.building_type}</td>
+                                                <td>{detail.city}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div className="divider" style={{ margin: '2.5rem, 0rem' }}></div>
+                        </div>
+                    ))}
                 </div>
             </div>
 

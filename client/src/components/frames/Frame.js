@@ -1,15 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './_frame.scss';
 import Icon from './frame-img/Icon.svg';
 
-const Frame = ({ image, title }) => {
-    const navigate = useNavigate();
-
-    const handleIconClick = () => {
-        navigate('/photo-details');
-    };
-
+const Frame = ({ image, title, onClick }) => {
     return (
         <div className='frame'>
             <img src={image} alt={title} className='frame-image' />
@@ -19,7 +12,7 @@ const Frame = ({ image, title }) => {
                     src={Icon}
                     alt='Icon'
                     className='menu-icon'
-                    onClick={handleIconClick}
+                    onClick={onClick}
                 />
             </div>
         </div>
