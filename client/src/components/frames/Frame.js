@@ -4,7 +4,7 @@ import Icon from './frame-img/Icon.svg';
 
 const Frame = ({ image, title, onClick }) => {
     return (
-        <div className='frame'>
+        <div className='frame' onClick={onClick}>
             <img src={image} alt={title} className='frame-image' />
             <div className='frame-menu'>
                 <p className='frame-name'>{title}</p>

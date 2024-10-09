@@ -4,6 +4,7 @@ import './_photo-details.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Banner from '../Photolist COS/photolist-img/Header Banner.png';
 import Footer from '../../components/Footer/Footer';
+import WatsonChat from '../../components/Watson/WatsonChat';
 
 const PhotoDetails = () => {
     const location = useLocation();
@@ -60,7 +61,6 @@ const PhotoDetails = () => {
                                         <tr>
                                             <th>Object</th>
                                             <th>Coordinate</th>
-                                            <th>Length</th>
                                             <th>Width</th>
                                             <th>Height</th>
                                             <th>Building Type</th>
@@ -75,9 +75,8 @@ const PhotoDetails = () => {
                                                     <span className="coord-label">Latitude:</span> {detail.lat} <br />
                                                     <span className="coord-label">Longitude:</span> {detail.long}
                                                 </td>
-                                                <td>{detail.length}m</td>
                                                 <td>{detail.width}m</td>
-                                                <td>{detail.height}m</td>
+                                                <td>{detail.length}m</td>
                                                 <td>{detail.building_type}</td>
                                                 <td>{detail.city}</td>
                                             </tr>
@@ -93,6 +92,7 @@ const PhotoDetails = () => {
             </div>
 
             <Footer />
+            <WatsonChat />
         </div>
     );
 };

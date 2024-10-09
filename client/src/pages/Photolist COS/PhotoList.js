@@ -6,7 +6,7 @@ import Banner from './photolist-img/Header Banner.png';
 import Frame from '../../components/frames/Frame';
 import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
-
+import WatsonChat from '../../components/Watson/WatsonChat';
 const PhotoList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [frames, setFrames] = useState([]);
@@ -87,6 +87,8 @@ const PhotoList = () => {
                 )}
             </div>
             <Footer />
+            <WatsonChat />
+
         </div>
     );
 };
