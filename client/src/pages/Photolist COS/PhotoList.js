@@ -19,7 +19,7 @@ const PhotoList = () => {
         const fetchFrames = async () => {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:3002/get_from_db');
+                const response = await fetch('http://162.133.112.98:8080/get_from_db');
                 const data = await response.json();
 
                 if (data.status === 'success') {
